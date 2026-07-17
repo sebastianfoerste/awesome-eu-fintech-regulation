@@ -1,0 +1,58 @@
+# Awesome EU Fintech Regulation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
+A curated list of primary sources, regulator resources, and open-source tools for EU financial regulation: MiCAR, DORA, MiFID II, PSD2, and the AI Act as it hits financial services.
+
+Maintained by a practicing EU financial-regulation lawyer. Every link is checked before merge; entries that go stale get removed. Nothing here is legal advice.
+
+## Contents
+
+- [Legislation (Level 1)](#legislation-level-1)
+- [Regulators and registers](#regulators-and-registers)
+- [Guides and trackers](#guides-and-trackers)
+- [Open-source tools](#open-source-tools)
+- [Related lists](#related-lists)
+
+## Legislation (Level 1)
+
+Consolidated texts on EUR-Lex.
+
+- [MiCAR — Regulation (EU) 2023/1114](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1114) - Markets in crypto-assets: whitepaper duties, ART/EMT regimes, CASP authorization.
+- [DORA — Regulation (EU) 2022/2554](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2554) - Digital operational resilience: ICT risk, third-party registers, incident reporting.
+- [MiFID II — Directive 2014/65/EU](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0065) - Markets in financial instruments; the boundary question for every token classification.
+- [PSD2 — Directive (EU) 2015/2366](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366) - Payment services; still the operative regime pending PSD3/PSR.
+- [AI Act — Regulation (EU) 2024/1689](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) - Horizontal AI rules; Annex III catches credit scoring and insurance pricing.
+
+## Regulators and registers
+
+- [ESMA — MiCA hub](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica) - Level 2/3 measures, Q&As, and supervisory convergence work.
+- [ESMA — MiCA register](https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_mica) - Notified whitepapers, authorized CASPs and issuers. The primary empirical dataset for MiCAR work.
+- [ESMA — DORA page](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/digital-operational-resilience-act-dora) - Joint-ESA RTS/ITS work and oversight of critical ICT providers.
+- [EBA — markets in crypto-assets](https://www.eba.europa.eu/activities/direct-supervision-and-oversight/markets-crypto-assets) - ART/EMT supervision, significance assessments, own-funds guidance.
+- [EIOPA — DORA page](https://www.eiopa.europa.eu/digital-operational-resilience-act-dora_en) - Insurance-sector DORA implementation.
+- [BaFin — MiCAR portal](https://www.bafin.de/DE/Aufsicht/MiCAR/MiCAR_node.html) - German NCA practice: authorization procedure, national transition rules (German).
+- [European Commission — digital finance](https://finance.ec.europa.eu/digital-finance_en) - Legislative pipeline: PSD3/PSR, FiDA, digital euro.
+
+## Guides and trackers
+
+- [EU AI Act Explorer](https://artificialintelligenceact.eu/) - Full-text navigation, obligation timelines, and implementation tracker (Future of Life Institute).
+
+## Open-source tools
+
+Disclosure: the first four entries are maintained by the author of this list.
+
+- [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) - Deterministic MiCAR whitepaper linter with pinpoint citations, CI action, and a reproducible study over ESMA-register filings.
+- [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) - Deterministic EU AI Act risk-tier classifier with cited obligations and review gates.
+- [dora-third-party-register-and-resilience-workbench](https://github.com/sebastianfoerste/dora-third-party-register-and-resilience-workbench) - DORA ICT third-party register and resilience governance workbench with audit exports.
+- [eu-financial-reg-horizon-scanner](https://github.com/sebastianfoerste/eu-financial-reg-horizon-scanner) - Review-gated horizon scanner for EU financial regulation with proof packets and citations.
+- [EuConform](https://github.com/Hiepler/EuConform) - EU AI Act risk classification and bias testing tool.
+- [AegisAI](https://github.com/SdSarthak/AegisAI) - Open-source AI governance, risk and compliance platform with EU AI Act coverage.
+
+## Related lists
+
+- [awesome-eu-ai-act](https://github.com/GenAI-Gurus/awesome-eu-ai-act) - Tools, official sources, and templates for EU AI Act compliance.
+- [awesome-legal-nlp](https://github.com/maastrichtlawtech/awesome-legal-nlp) - LegalNLP datasets, models, and benchmarks.
+- [awesome-legaltech](https://github.com/Vaquill-AI/awesome-legaltech) - Open-source platforms, models, and tools for the legal ecosystem.
+
+## Contributing
+
+Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Hard rules: primary sources over commentary, working links, no vendor marketing pages, self-promotion requires disclosure.
