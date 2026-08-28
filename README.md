@@ -38,12 +38,14 @@ Consolidated texts on EUR-Lex.
 
 ## Open-source tools
 
-Disclosure: the first four entries are maintained by the author of this list.
+Disclosure: the first six entries are maintained by the author of this list.
 
 - [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) - Deterministic MiCAR whitepaper linter with pinpoint citations, CI action, and a reproducible study over ESMA-register filings.
 - [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) - Deterministic EU AI Act risk-tier classifier with cited obligations and review gates.
 - [dora-third-party-register-and-resilience-workbench](https://github.com/sebastianfoerste/dora-third-party-register-and-resilience-workbench) - DORA ICT third-party register and resilience governance workbench with audit exports.
 - [eu-financial-reg-horizon-scanner](https://github.com/sebastianfoerste/eu-financial-reg-horizon-scanner) - Review-gated horizon scanner for EU financial regulation with proof packets and citations.
+- [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Evaluation harness for legal AI contract review: clause scoring, citation grounding, unsupported-citation counts and an adversarial minimal-pair campaign across NDA, SaaS and Art. 28 GDPR data processing agreements.
+- [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - Deterministic legal function operating model for intake, risk, routing, SLAs, approvals and board reporting, with a versioned control contract between the operating model and its supervised agent.
 - [EuConform](https://github.com/Hiepler/EuConform) - EU AI Act risk classification and bias testing tool.
 - [AegisAI](https://github.com/SdSarthak/AegisAI) - Open-source AI governance, risk and compliance platform with EU AI Act coverage.
 
