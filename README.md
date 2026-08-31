@@ -38,7 +38,20 @@ Consolidated texts on EUR-Lex.
 
 ## Open-source tools
 
-Disclosure: the first six entries are maintained by the author of this list.
+- [AegisAI](https://github.com/SdSarthak/AegisAI) - Open-source AI governance, risk and compliance platform with EU AI Act coverage.
+- [AI Act Implementation Tool](https://github.com/NGO-Algorithm-Audit/AI-Act-Implementation-Tool) - Risk classification of algorithmic systems via structured questionnaires (Algorithm Audit).
+- [AI Assessment Tool](https://github.com/AI4Belgium/ai-assessment-tool) - ALTAI-based trustworthy-AI self-assessment tool (AI4Belgium).
+- [Arelle](https://github.com/Arelle/Arelle) - XBRL platform used for ESEF and EBA supervisory-reporting filings.
+- [Common Domain Model](https://github.com/finos/common-domain-model) - FINOS/ISDA model of financial products, trades and lifecycle events; the substrate for digital regulatory reporting.
+- [EuConform](https://github.com/Hiepler/EuConform) - EU AI Act risk classification and bias testing tool.
+- [EUDI Wallet ARF](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework) - Architecture and reference framework for the European Digital Identity Wallet.
+- [FIRE Data Standard](https://github.com/SuadeLabs/fire) - Suade Labs' open data standard for granular regulatory reporting.
+- [Rune DSL](https://github.com/finos/rune-dsl) - DSL and code generators behind the Common Domain Model and digital regulatory reporting.
+- [XS2A](https://github.com/adorsys/xs2a) - Open-source NextGenPSD2 XS2A access-to-account interface implementation.
+
+### Maintained by the curator
+
+Disclosure: these six are maintained by the author of this list.
 
 - [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) - Deterministic MiCAR whitepaper linter with pinpoint citations, CI action, and a reproducible study over ESMA-register filings.
 - [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) - Deterministic EU AI Act risk-tier classifier with cited obligations and review gates.
@@ -46,8 +59,6 @@ Disclosure: the first six entries are maintained by the author of this list.
 - [eu-financial-reg-horizon-scanner](https://github.com/sebastianfoerste/eu-financial-reg-horizon-scanner) - Review-gated horizon scanner for EU financial regulation with proof packets and citations.
 - [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Evaluation harness for legal AI contract review: clause scoring, citation grounding, unsupported-citation counts and an adversarial minimal-pair campaign across NDA, SaaS and Art. 28 GDPR data processing agreements.
 - [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - Deterministic legal function operating model for intake, risk, routing, SLAs, approvals and board reporting, with a versioned control contract between the operating model and its supervised agent.
-- [EuConform](https://github.com/Hiepler/EuConform) - EU AI Act risk classification and bias testing tool.
-- [AegisAI](https://github.com/SdSarthak/AegisAI) - Open-source AI governance, risk and compliance platform with EU AI Act coverage.
 
 ## Related lists
 
