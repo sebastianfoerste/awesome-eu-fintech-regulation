@@ -10,6 +10,7 @@ Maintained by a practicing EU financial-regulation lawyer. Every link is checked
 - [Regulators and registers](#regulators-and-registers)
 - [Guides and trackers](#guides-and-trackers)
 - [Open-source tools](#open-source-tools)
+- [Level 2 measures](#level-2-measures)
 - [Related lists](#related-lists)
 
 ## Legislation (Level 1)
@@ -51,14 +52,20 @@ Consolidated texts on EUR-Lex.
 
 ### Maintained by the curator
 
-Disclosure: these six are maintained by the author of this list.
+Disclosure: these four are maintained by the author of this list.
 
 - [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) - Deterministic MiCAR whitepaper linter with pinpoint citations, CI action, and a reproducible study over ESMA-register filings.
 - [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) - Deterministic EU AI Act risk-tier classifier with cited obligations and review gates.
-- [dora-third-party-register-and-resilience-workbench](https://github.com/sebastianfoerste/dora-third-party-register-and-resilience-workbench) - DORA ICT third-party register and resilience governance workbench with audit exports.
-- [eu-financial-reg-horizon-scanner](https://github.com/sebastianfoerste/eu-financial-reg-horizon-scanner) - Review-gated horizon scanner for EU financial regulation with proof packets and citations.
 - [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Evaluation harness for legal AI contract review: clause scoring, citation grounding, unsupported-citation counts and an adversarial minimal-pair campaign across NDA, SaaS and Art. 28 GDPR data processing agreements.
 - [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - Deterministic legal function operating model for intake, risk, routing, SLAs, approvals and board reporting, with a versioned control contract between the operating model and its supervised agent.
+
+## Level 2 measures
+
+Delegated and implementing acts, and the drafts still in the pipeline. Level 1 tells you the obligation exists; Level 2 tells you the number.
+
+- [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj) - RTS on the minimum contents of the liquidity management policy for issuers of ARTs and EMTs, under Art. 45(7) MiCAR. Adopted 27 June 2025, in force 23 October 2025.
+- [EBA final report EBA/RTS/2024/10](https://www.eba.europa.eu/sites/default/files/2024-06/580db2f3-8370-4927-baa3-0f995722b417/Final%20report_draft%20RTS%20further%20specifying%20the%20liquidity%20requirements%20Article%2036%204.pdf) - Draft RTS on the liquidity requirements of the reserve of assets under Art. 36(4) MiCAR, including the deposit minimums. Submitted June 2024, not yet adopted.
+- [EBA asset-referenced and e-money token page](https://www.eba.europa.eu/regulation-and-policy/asset-referenced-and-e-money-tokens-mica) - Status tracker for every MiCAR technical standard EBA owns, including the October 2025 opinions on the Commission's proposed amendments.
 
 ## Related lists
 
