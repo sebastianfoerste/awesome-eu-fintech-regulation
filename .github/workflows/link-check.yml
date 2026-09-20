@@ -1,0 +1,23 @@
+name: Link check
+
+# Regulator sites rate-limit and bot-wall automated clients, so this runs on a
+# schedule rather than on pull requests. A flaky merge gate would be worse than
+# none. 403 and 429 are accepted for that reason; genuine 404s still fail.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-retries 3 --retry-wait-time 10 --timeout 30 --accept 200,202,203,204,206,301,302,303,307,308,403,429 README.md
+          fail: true
+
