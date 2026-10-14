@@ -15,22 +15,22 @@ Maintained by a practicing EU financial-regulation lawyer. CI checks every link 
 
 ## Legislation (Level 1)
 
-Consolidated texts on EUR-Lex.
+Official Journal texts on EUR-Lex. Later amendments appear in the consolidated versions.
 
 - [MiCAR — Regulation (EU) 2023/1114](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1114) - Markets in crypto-assets: whitepaper duties, ART/EMT regimes, CASP authorization.
 - [DORA — Regulation (EU) 2022/2554](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2554) - Digital operational resilience: ICT risk, third-party registers, incident reporting.
 - [MiFID II — Directive 2014/65/EU](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0065) - Markets in financial instruments; the boundary question for every token classification.
 - [PSD2 — Directive (EU) 2015/2366](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366) - Payment services; still the operative regime pending PSD3/PSR.
-- [AI Act — Regulation (EU) 2024/1689](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) - Horizontal AI rules; Annex III catches credit scoring and insurance pricing.
+- [AI Act — Regulation (EU) 2024/1689](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) - Horizontal AI rules; Annex III point 5(b) and (c) catch credit scoring of natural persons and risk assessment and pricing in life and health insurance.
 
 ## Regulators and registers
 
 - [ESMA — MiCA hub](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica) - Level 2/3 measures, Q&As, and supervisory convergence work.
-- [ESMA — MiCA register](https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_mica) - Notified whitepapers, authorized CASPs and issuers. The primary empirical dataset for MiCAR work.
+- [ESMA — interim MiCA register](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica#InterimMiCARegister) - CSV files of notified whitepapers, ART and EMT issuers, authorized CASPs and non-compliant entities (Arts. 109 and 110 MiCAR). The primary empirical dataset for MiCAR work.
 - [ESMA — DORA page](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/digital-operational-resilience-act-dora) - Joint-ESA RTS/ITS work and oversight of critical ICT providers.
 - [EBA — markets in crypto-assets](https://www.eba.europa.eu/activities/direct-supervision-and-oversight/markets-crypto-assets) - ART/EMT supervision, significance assessments, own-funds guidance.
 - [EIOPA — DORA page](https://www.eiopa.europa.eu/digital-operational-resilience-act-dora_en) - Insurance-sector DORA implementation.
-- [BaFin — MiCAR portal](https://www.bafin.de/DE/Aufsicht/MiCAR/MiCAR_node.html) - German NCA practice: authorization procedure, national transition rules (German).
+- [BaFin — crypto institutions](https://www.bafin.de/DE/unternehmen-maerkte/aufsicht/kryptoinstitute/kryptoinstitute_node) - German NCA practice: notification and reporting duties under the KMAG, whitepaper submission under Art. 8 MiCAR (German).
 - [European Commission — digital finance](https://finance.ec.europa.eu/digital-finance_en) - Legislative pipeline: PSD3/PSR, FiDA, digital euro.
 
 ## Guides and trackers
@@ -63,9 +63,9 @@ Disclosure: these four are maintained by the author of this list.
 
 Delegated and implementing acts, and the drafts still in the pipeline. Level 1 tells you the obligation exists; Level 2 tells you the number.
 
-- [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj) - RTS on the minimum contents of the liquidity management policy for issuers of ARTs and EMTs, under Art. 45(7) MiCAR. Adopted 27 June 2025, in force 23 October 2025.
-- [EBA final report EBA/RTS/2024/10](https://www.eba.europa.eu/sites/default/files/2024-06/580db2f3-8370-4927-baa3-0f995722b417/Final%20report_draft%20RTS%20further%20specifying%20the%20liquidity%20requirements%20Article%2036%204.pdf) - Draft RTS on the liquidity requirements of the reserve of assets under Art. 36(4) MiCAR, including the deposit minimums. Submitted June 2024, not yet adopted.
-- [EBA asset-referenced and e-money token page](https://www.eba.europa.eu/regulation-and-policy/asset-referenced-and-e-money-tokens-mica) - Status tracker for every MiCAR technical standard EBA owns, including the October 2025 opinions on the Commission's proposed amendments.
+- [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj) - RTS on the minimum contents of the liquidity management policy and procedures for issuers of significant ARTs and EMTs, and for other issuers where their competent authority requires it, under Art. 45(7), first subparagraph, point (b) MiCAR. Adopted 27 June 2025, in force 23 October 2025.
+- [EBA final report EBA/RTS/2024/10](https://www.eba.europa.eu/sites/default/files/2024-06/580db2f3-8370-4927-baa3-0f995722b417/Final%20report_draft%20RTS%20further%20specifying%20the%20liquidity%20requirements%20Article%2036%204.pdf) - Draft RTS on the liquidity requirements of the reserve of assets under Art. 36(4) and Art. 45(7)(b) MiCAR, including the deposit minimums. Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; not yet adopted.
+- [EBA asset-referenced and e-money token page](https://www.eba.europa.eu/regulation-and-policy/asset-referenced-and-e-money-tokens-mica) - Status tracker for every MiCAR technical standard EBA owns, including the EBA's 10 October 2025 opinion on the Commission's proposed amendments to the Art. 36(4) RTS. Its press release also carries the companion opinion on the HLFI RTS.
 
 ## Related lists
 
