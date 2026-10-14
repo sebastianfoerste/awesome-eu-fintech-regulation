@@ -1,17 +1,61 @@
 # Awesome EU Fintech Regulation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of primary sources, regulator resources, and open-source tools for EU financial regulation: MiCAR, DORA, MiFID II, PSD2, and the AI Act as it hits financial services.
+**Find the actual legal text, the current Level 2 status and the open-source tooling for EU fintech compliance, with primary sources only.**
 
-Maintained by a practicing EU financial-regulation lawyer. CI checks every link weekly, and stale entries are removed. Nothing here is legal advice.
+Keywords: MiCAR, DORA, MiFID II, PSD2, EU AI Act in financial services. Maintained by a practicing EU financial-regulation lawyer. Nothing here is legal advice.
+
+## Why this list
+
+* **Primary sources only.** EUR-Lex texts, regulator pages and registers, not law-firm client alerts or vendor pages.
+* **Weekly link checks.** CI checks every link weekly, and stale entries are removed. Offline structural tests run on every pull request.
+* **Disclosed self-promotion.** The four tools the curator maintains sit in their own labelled section.
+* **Level 2 status.** Dated, status-tracked delegated and implementing acts, not just the Level 1 acts.
+
+## Try it
+
+The list is CC0 and needs no install. To read it or query it locally:
+
+```bash
+git clone https://github.com/sebastianfoerste/awesome-eu-fintech-regulation
+cd awesome-eu-fintech-regulation
+sed -n '/^## Level 2 measures/,/^## Related/p' README.md | grep -oE '^- \[[^]]*\]|(Adopted|Submitted) [^;]*(;[^;]*)*\.$' | sed 's/^- //'
+```
+
+Output, from running exactly that on this README:
+
+```text
+[Delegated Regulation (EU) 2025/1264]
+Adopted 27 June 2025, in force 23 October 2025.
+[EBA final report EBA/RTS/2024/10]
+Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; not yet adopted.
+[EBA asset-referenced and e-money token page]
+```
+
+Every entry carries its source link; see [Level 2 measures](#level-2-measures) for the citations (Art. 45(7)(b) and Art. 36(4) MiCAR). The status page has no date line, so check it directly. This repo ships no installable package (so no PyPI release is planned or implied); the commands above are the whole workflow.
+
+Run the offline structural checks (needs `pytest`; last run here: `4 passed`):
+
+```bash
+pip install pytest && python -m pytest -q
+```
 
 ## Contents
 
+- [Level 2 measures](#level-2-measures)
 - [Legislation (Level 1)](#legislation-level-1)
 - [Regulators and registers](#regulators-and-registers)
 - [Guides and trackers](#guides-and-trackers)
 - [Open-source tools](#open-source-tools)
-- [Level 2 measures](#level-2-measures)
 - [Related lists](#related-lists)
+- [Part of the EU regulation as code suite](#part-of-the-eu-regulation-as-code-suite)
+
+## Level 2 measures
+
+Delegated and implementing acts, and the drafts still in the pipeline. Level 1 tells you the obligation exists; Level 2 tells you the number.
+
+- [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj) - RTS on the minimum contents of the liquidity management policy and procedures for issuers of significant ARTs and EMTs, and for other issuers where their competent authority requires it, under Art. 45(7), first subparagraph, point (b) MiCAR. Adopted 27 June 2025, in force 23 October 2025.
+- [EBA final report EBA/RTS/2024/10](https://www.eba.europa.eu/sites/default/files/2024-06/580db2f3-8370-4927-baa3-0f995722b417/Final%20report_draft%20RTS%20further%20specifying%20the%20liquidity%20requirements%20Article%2036%204.pdf) - Draft RTS on the liquidity requirements of the reserve of assets under Art. 36(4) and Art. 45(7)(b) MiCAR, including the deposit minimums. Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; not yet adopted.
+- [EBA asset-referenced and e-money token page](https://www.eba.europa.eu/regulation-and-policy/asset-referenced-and-e-money-tokens-mica) - Status tracker for every MiCAR technical standard EBA owns, including the EBA's 10 October 2025 opinion on the Commission's proposed amendments to the Art. 36(4) RTS. Its press release also carries the companion opinion on the HLFI RTS.
 
 ## Legislation (Level 1)
 
@@ -59,20 +103,26 @@ Disclosure: these four are maintained by the author of this list.
 - [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Evaluation harness for legal AI contract review: clause scoring, citation grounding, unsupported-citation counts and an adversarial minimal-pair campaign across NDA, SaaS and Art. 28 GDPR data processing agreements.
 - [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - Deterministic legal function operating model for intake, risk, routing, SLAs, approvals and board reporting, with a versioned control contract between the operating model and its supervised agent.
 
-## Level 2 measures
-
-Delegated and implementing acts, and the drafts still in the pipeline. Level 1 tells you the obligation exists; Level 2 tells you the number.
-
-- [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj) - RTS on the minimum contents of the liquidity management policy and procedures for issuers of significant ARTs and EMTs, and for other issuers where their competent authority requires it, under Art. 45(7), first subparagraph, point (b) MiCAR. Adopted 27 June 2025, in force 23 October 2025.
-- [EBA final report EBA/RTS/2024/10](https://www.eba.europa.eu/sites/default/files/2024-06/580db2f3-8370-4927-baa3-0f995722b417/Final%20report_draft%20RTS%20further%20specifying%20the%20liquidity%20requirements%20Article%2036%204.pdf) - Draft RTS on the liquidity requirements of the reserve of assets under Art. 36(4) and Art. 45(7)(b) MiCAR, including the deposit minimums. Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; not yet adopted.
-- [EBA asset-referenced and e-money token page](https://www.eba.europa.eu/regulation-and-policy/asset-referenced-and-e-money-tokens-mica) - Status tracker for every MiCAR technical standard EBA owns, including the EBA's 10 October 2025 opinion on the Commission's proposed amendments to the Art. 36(4) RTS. Its press release also carries the companion opinion on the HLFI RTS.
-
 ## Related lists
 
 - [awesome-eu-ai-act](https://github.com/GenAI-Gurus/awesome-eu-ai-act) - Tools, official sources, and templates for EU AI Act compliance.
 - [awesome-legal-nlp](https://github.com/maastrichtlawtech/awesome-legal-nlp) - LegalNLP datasets, models, and benchmarks.
 - [awesome-legaltech](https://github.com/Vaquill-AI/awesome-legaltech) - Open-source platforms, models, and tools for the legal ecosystem.
 
+## Part of the EU regulation as code suite
+
+"EU regulation as code" is a set of repos by [sebastianfoerste](https://github.com/sebastianfoerste). This list is the source map; the others are tooling and analysis.
+
+| Repo | Role |
+|---|---|
+| [awesome-eu-fintech-regulation](https://github.com/sebastianfoerste/awesome-eu-fintech-regulation) | This list |
+| [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) | Deterministic MiCAR whitepaper linter with pinpoint citations |
+| [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) | Deterministic EU AI Act risk-tier classifier |
+| [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) | Evaluation harness for legal AI contract review |
+| [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) | Deterministic legal function operating model |
+| [eu-reg-mcp](https://github.com/sebastianfoerste/eu-reg-mcp) | [UNVERIFIED] role not documented in this repo |
+| [micar-register-observatory](https://github.com/sebastianfoerste/micar-register-observatory) | [UNVERIFIED] role not documented in this repo |
+
 ## Contributing
 
-Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Hard rules: primary sources over commentary, working links, no vendor marketing pages, self-promotion requires disclosure.
+Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Hard rules: primary sources over commentary, working links, no vendor marketing pages, self-promotion requires disclosure. How the list is curated and checked: [docs/curation.md](docs/curation.md). Licensed CC0 (see [LICENSE](LICENSE)).
