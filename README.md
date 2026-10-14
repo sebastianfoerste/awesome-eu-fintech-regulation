@@ -2,7 +2,7 @@
 
 A curated list of primary sources, regulator resources, and open-source tools for EU financial regulation: MiCAR, DORA, MiFID II, PSD2, and the AI Act as it hits financial services.
 
-Maintained by a practicing EU financial-regulation lawyer. Every link is checked before merge; entries that go stale get removed. Nothing here is legal advice.
+Maintained by a practicing EU financial-regulation lawyer. CI checks every link weekly, and stale entries are removed. Nothing here is legal advice.
 
 ## Contents
 
