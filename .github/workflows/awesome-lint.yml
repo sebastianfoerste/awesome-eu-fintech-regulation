@@ -1,0 +1,26 @@
+name: Awesome lint
+
+# The checks the main awesome list runs before accepting a list. awesome-lint
+# reads the git history (the repo must be at least 30 days old), so check out
+# the full history rather than the latest commit only.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  awesome-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npx --yes awesome-lint@2.3.0 README.md
+        env:
+          github_token: ${{ github.token }}
