@@ -23,7 +23,7 @@ Level 2 entries end with a dated status line in one of these forms, with dates w
 - Draft or proposal: `Submitted <date>; <what has happened since, with its date>; not yet adopted.`
 - Status pages carry no status line; they are dated at the source.
 
-Tests check the wording. The weekly link check compares the dates of adopted acts with the EU Publications Office's metadata (CELLAR). Don't edit `docs/level2.md` by hand: it is generated from `data/level2.csv` by `python scripts/level2.py`.
+Tests check the wording. The weekly link check compares the dates of adopted acts with the EU Publications Office's metadata (CELLAR). Don't edit `docs/level2.md` by hand: it is generated from `data/level2.csv` by `python scripts/level2.py`. To annotate an act there, fill in an `article` or `what_it_fixes` column in the CSV; [docs/curation.md](docs/curation.md#level-2-tracker) explains how.
 
 ## Open-source tools
 

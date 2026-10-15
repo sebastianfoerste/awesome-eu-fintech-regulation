@@ -28,7 +28,7 @@ python scripts/level2.py check    # offline: exit 1 if a page no longer matches 
 python scripts/level2.py diff     # list what CELLAR now says differently from the CSV
 ```
 
-Columns added to the CSV by hand, such as a note on what an act fixes, survive `update`. The annotated entries under "Level 2 measures" in the README stay hand-written.
+Columns added to the CSV by hand survive `update`. To annotate acts, add an `article` column (the Level 1 provision an act is adopted under) or a `what_it_fixes` column (one line on what the act specifies), fill it in and run `render`. The tracker shows each of the two in every table where at least one act has it filled in, marked as hand-written notes rather than CELLAR data. The annotated entries under "Level 2 measures" in the README stay hand-written.
 
 ## Automated checks
 

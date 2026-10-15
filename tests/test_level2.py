@@ -126,6 +126,49 @@ def test_merge_keeps_hand_added_columns():
     assert merged == [{"regime": "DORA", "celex": "32024R1774", "title": "new title", "what_it_fixes": "ICT risk"}]
 
 
+def tables(docs):
+    """{regime: the table lines under its heading} from a rendered tracker page."""
+    found, regime = {}, None
+    for line in docs.splitlines():
+        if line.startswith("## "):
+            regime = line[3:]
+        elif regime and line.startswith("|"):
+            found.setdefault(regime, []).append(line)
+    return found
+
+
+def test_annotations_show_only_in_tables_that_fill_them_in():
+    rows = level2.parse([binding("32025R1264", "2025-10-23", ENTRY_INTO_FORCE),
+                         binding("32024R1503", "2024-06-19", ENTRY_INTO_FORCE),
+                         binding("32024R1774", "2024-07-15", ENTRY_INTO_FORCE, basic_celex="32022R2554")])
+    plain = level2.render_docs(rows, "2026-10-15")
+    assert "What it fixes" not in plain and "Level 1 article" not in plain and "hand-written" not in plain
+
+    by_celex = {row["celex"]: row for row in rows}
+    by_celex["32025R1264"]["what_it_fixes"] = "Minimum contents of the |liquidity|\n  policy."
+    by_celex["32024R1503"]["article"] = None  # csv.DictReader's value for a short row
+    docs = level2.render_docs(rows, "2026-10-15")
+    micar, dora = tables(docs)["MiCAR"], tables(docs)["DORA"]
+    assert "| What it fixes |" in micar[0] and "Level 1 article" not in micar[0]
+    assert "What it fixes" not in dora[0]
+    assert r"Minimum contents of the \|liquidity\| policy." in next(line for line in micar if "2025/1264" in line)
+    for table in (micar, dora):
+        widths = {len(re.findall(r"(?<!\\)\|", line)) for line in table}
+        assert len(widths) == 1, table
+    assert "*What it fixes*, where a table has them, are hand-written notes, not CELLAR data." in docs
+
+
+def test_annotation_columns_round_trip_through_the_csv(tmp_path):
+    rows = level2.parse([binding("32025R1264", "2025-10-23", ENTRY_INTO_FORCE)])
+    rows[0].update(article="Art. 45(7)(b)", what_it_fixes="Minimum contents of the liquidity policy.")
+    path = tmp_path / "level2.csv"
+    path.write_text(level2.to_csv(rows, ["article", "what_it_fixes"]), encoding="utf-8")
+    read, extra = level2.read_csv(path)
+    assert extra == ["article", "what_it_fixes"]
+    assert read[0]["article"] == "Art. 45(7)(b)"
+    assert "| Art. 45(7)(b) | Minimum contents of the liquidity policy. |" in level2.render_docs(read, "2026-10-15")
+
+
 def test_guard_refuses_an_empty_answer_for_a_regime():
     with pytest.raises(SystemExit):
         level2.guard([], [{"regime": "MiCAR", "celex": "32025R1264"}])

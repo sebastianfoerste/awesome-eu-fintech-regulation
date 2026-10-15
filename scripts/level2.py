@@ -11,7 +11,9 @@ README.md from that file. It reads metadata only and interprets nothing.
     python scripts/level2.py check    exit 1 if a page no longer matches the CSV (offline)
     python scripts/level2.py diff     list what CELLAR now says differently from the CSV
 
-Columns added to the CSV by hand (an annotation column, say) survive `update`.
+Columns added to the CSV by hand survive `update`. Two of them are shown in the tracker once
+filled in: `article` (the Level 1 provision an act is adopted under) and `what_it_fixes`
+(one line on what the act specifies).
 """
 
 import argparse
@@ -52,6 +54,8 @@ TYPES = {
 }
 COLUMNS = ["regime", "celex", "act", "title", "adopted", "entry_into_force", "applies_from",
            "applies_in_part_from", "in_force", "end_of_validity", "eli"]
+# Columns added to the CSV by hand that the tracker shows, in any table where one act has them filled in.
+ANNOTATIONS = {"article": "Level 1 article", "what_it_fixes": "What it fixes"}
 
 STATUS_START = "<!-- level2-status:start -->"
 STATUS_END = "<!-- level2-status:end -->"
@@ -270,6 +274,29 @@ def applies(row):
     return "; ".join(f"{date}{suffix}" for date, suffix in sorted(dates)) or "–"
 
 
+def ended(row):
+    return row["end_of_validity"] or "–"
+
+
+def annotated(rows):
+    """The ANNOTATIONS columns that at least one of `rows` fills in."""
+    return [column for column in ANNOTATIONS if any((row.get(column) or "").strip() for row in rows)]
+
+
+def table(rows, last, value):
+    """One tracker table: act, subject, any annotations its rows fill in, dates, and a last column."""
+    notes = annotated(rows)
+    headers = ["Act", "Subject (from the official title)", *(ANNOTATIONS[column] for column in notes),
+               "Adopted", "In force from", last]
+    lines = ["| " + " | ".join(headers) + " |", "|" + "---|" * len(headers)]
+    for row in rows:
+        cells = [f"[{row['act']}]({eurlex(row)})", cell(subject(row["title"])),
+                 *(cell(" ".join((row.get(column) or "").split())) for column in notes),
+                 row["adopted"], row["entry_into_force"], value(row)]
+        lines.append("| " + " | ".join(cells) + " |")
+    return lines
+
+
 def render_docs(rows, checked):
     lines = [
         "# Level 2 tracker",
@@ -297,6 +324,9 @@ def render_docs(rows, checked):
         "that date; a dash means CELLAR records no separate date. Not included: drafts, ESA final reports, "
         "guidelines and Q&As (Level 3), and Official Journal corrigenda.",
     ]
+    if annotated(rows):
+        lines += ["", "*Level 1 article* and *What it fixes*, where a table has them, are hand-written notes, "
+                      "not CELLAR data."]
     for regime in REGIMES:
         acts = [row for row in rows if row["regime"] == regime.name]
         current = [row for row in acts if row["in_force"] == "true"]
@@ -305,16 +335,9 @@ def render_docs(rows, checked):
         intro = f"Level 1 act: [{regime.citation}]({level1}). In force: {len(current)}."
         lines += ["", f"## {regime.name}", "", " ".join([intro, NOTES.get(regime.name, "")]).strip()]
         if current:
-            lines += ["", "| Act | Subject (from the official title) | Adopted | In force from | Applies from |",
-                      "|---|---|---|---|---|"]
-            lines += [f"| [{row['act']}]({eurlex(row)}) | {cell(subject(row['title']))} | {row['adopted']} "
-                      f"| {row['entry_into_force']} | {applies(row)} |" for row in current]
+            lines += ["", *table(current, "Applies from", applies)]
         if former:
-            lines += ["", "No longer in force:", "",
-                      "| Act | Subject (from the official title) | Adopted | In force from | End of validity |",
-                      "|---|---|---|---|---|"]
-            lines += [f"| [{row['act']}]({eurlex(row)}) | {cell(subject(row['title']))} | {row['adopted']} "
-                      f"| {row['entry_into_force']} | {row['end_of_validity'] or '–'} |" for row in former]
+            lines += ["", "No longer in force:", "", *table(former, "End of validity", ended)]
     return "\n".join(lines) + "\n"
 
 
