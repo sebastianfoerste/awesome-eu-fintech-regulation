@@ -5,6 +5,8 @@ name: Level 2 watch
 # answer with data/level2.csv. If anything differs, open one issue labelled
 # level2-update, or rewrite the body of the one already open. It never edits the
 # list: a person reviews the change and runs `python scripts/level2.py update`.
+# The "Level 2 status update" issue form uses the same label for reports people
+# file by hand, so the workflow finds its own issue by title and leaves those alone.
 on:
   schedule:
     - cron: "0 7 * * 1"
@@ -29,17 +31,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           REPORT: ${{ runner.temp }}/level2-report.md
+          TITLE: "Level 2: CELLAR records changes not yet in data/level2.csv"
         run: |
           if [ ! -f "$REPORT" ]; then
             echo "CELLAR matches data/level2.csv."
             exit 0
           fi
           gh label create level2-update --color 1d76db --force \
-            --description "CELLAR records a Level 2 change not yet in data/level2.csv"
-          number=$(gh issue list --label level2-update --state open --limit 1 --json number --jq '.[0].number // empty')
+            --description "A Level 2 status change the list does not reflect yet"
+          number=$(gh issue list --label level2-update --state open --limit 100 --json number,title \
+            --jq "map(select(.title == \"$TITLE\")) | .[0].number // empty")
           if [ -n "$number" ]; then
             gh issue edit "$number" --body-file "$REPORT"
           else
-            gh issue create --title "Level 2: CELLAR records changes not yet in data/level2.csv" \
-              --label level2-update --body-file "$REPORT"
+            gh issue create --title "$TITLE" --label level2-update --body-file "$REPORT"
           fi
