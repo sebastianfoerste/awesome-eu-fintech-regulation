@@ -1,0 +1,14 @@
+# Link check settings for .github/workflows/link-check.yml.
+#
+# EUR-Lex answers automated clients with HTTP 202 and an empty page, so a lychee
+# "pass" on a EUR-Lex link proves nothing. Those links are excluded here and checked
+# against CELLAR, the EU Publications Office's metadata, by scripts/verify_celex.py.
+# 202 is not accepted anywhere else either. Regulator sites bot-wall and rate-limit
+# automated clients, so 403 and 429 are accepted; genuine 404s still fail.
+
+exclude = ["^https?://eur-lex\\.europa\\.eu/"]
+accept = ["200..=201", "203..=204", "206", "301..=303", "307..=308", "403", "429"]
+max_retries = 3
+retry_wait_time = 10
+timeout = 30
+no_progress = true
