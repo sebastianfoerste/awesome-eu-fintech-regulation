@@ -105,6 +105,20 @@ def test_subject_drops_the_citation_and_the_supplementing_preamble():
                                      "liquidity management policy")
 
 
+@pytest.mark.parametrize("note", ["(Text with EEA relevance)", "(Text with EEA relevance.)",
+                                  "(Text with EEA relevance. )"])
+def test_subject_drops_every_form_of_the_eea_relevance_note(note):
+    title = ("Commission Delegated Regulation (EU) 2017/568 of 24 May 2016 supplementing Directive 2014/65/EU of the "
+             "European Parliament and of the Council with regard to regulatory technical standards for the admission "
+             f"of financial instruments to trading on regulated markets {note}")
+    assert level2.subject(title) == ("Regulatory technical standards for the admission of financial instruments to "
+                                     "trading on regulated markets")
+
+
+def test_tracker_subjects_carry_no_eea_relevance_note():
+    assert "EEA relevance" not in level2.DOCS_PATH.read_text(encoding="utf-8")
+
+
 def test_merge_keeps_hand_added_columns():
     fetched = [{"regime": "DORA", "celex": "32024R1774", "title": "new title"}]
     existing = [{"regime": "DORA", "celex": "32024R1774", "title": "old title", "what_it_fixes": "ICT risk"}]

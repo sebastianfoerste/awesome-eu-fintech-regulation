@@ -62,6 +62,8 @@ CITATION = re.compile(r"^Commission ((?:Delegated|Implementing) (?:Regulation|Di
                       r"\([^)]+\) (?:No )?\d+/\d+)")
 SUBJECT_PREFIX = re.compile(r"^Commission (?:Delegated|Implementing) (?:Regulation|Directive|Decision) "
                             r"\([^)]+\) (?:No )?\d+/\d+ of \d{1,2} \w+ \d{4},? ")
+# Official titles end in "(Text with EEA relevance)", "(... relevance.)" or "(... relevance. )".
+EEA_RELEVANCE = re.compile(r"\s*\(Text with EEA relevance\.?\s*\)\.?$")
 # Applied in order, at most one: drop the 'supplementing <Level 1 act> ...' preamble so the
 # subject starts where the title says what the act does. Titles that match none stay whole.
 LEVEL1_REFERENCE = r".*?of the European Parliament and of the Council(?: on [^,]*?)?,? "
@@ -245,7 +247,7 @@ def eurlex(row):
 
 def subject(title):
     """The official title without the act's own citation and the 'supplementing ...' preamble."""
-    text = SUBJECT_PREFIX.sub("", re.sub(r"\s*\(Text with EEA relevance\)\.?$", "", title), count=1)
+    text = SUBJECT_PREFIX.sub("", EEA_RELEVANCE.sub("", title), count=1)
     for pattern, replacement in SUBJECT_PREAMBLES:
         if pattern.match(text):
             text = pattern.sub(replacement, text, count=1)
