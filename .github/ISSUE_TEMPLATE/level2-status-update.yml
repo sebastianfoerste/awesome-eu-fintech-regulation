@@ -1,0 +1,67 @@
+name: Level 2 status update
+description: A delegated or implementing act, a draft RTS or ITS, an ESA final report or a Commission amendment has changed status.
+title: "Level 2 status: "
+labels: ["level2-update"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when a delegated or implementing act, a draft RTS or ITS, an ESA final report or a Commission amendment has changed status.
+
+        A weekly workflow already opens a `level2-update` issue for changes that CELLAR, the EU Publications Office's metadata service, records. This form is for what CELLAR does not cover: drafts, ESA final reports and Commission proposals.
+  - type: input
+    id: celex
+    attributes:
+      label: CELEX number or ESA reference
+      placeholder: "e.g. 32025R1264 or EBA/RTS/2024/10"
+    validations:
+      required: true
+  - type: dropdown
+    id: level1-act
+    attributes:
+      label: Level 1 act
+      options:
+        - MiCAR
+        - DORA
+        - MiFID II
+        - PSD2
+        - AI Act
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: New status
+      options:
+        - Submitted by an ESA
+        - Commission proposed amendments
+        - Adopted by the Commission
+        - Published in the Official Journal
+        - In force
+        - Applies
+        - Repealed or replaced
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date of the change
+      description: Day, month in words, year, as the list writes dates.
+      placeholder: "27 June 2025"
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: An official source, such as EUR-Lex, the Official Journal, or an ESA or Commission page.
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+    validations:
+      required: false

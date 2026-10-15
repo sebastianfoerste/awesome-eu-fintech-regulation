@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contribution guidelines
+    url: https://github.com/sebastianfoerste/awesome-eu-fintech-regulation/blob/main/CONTRIBUTING.md
+    about: What qualifies for the list, the entry format, and the rules for pull requests.

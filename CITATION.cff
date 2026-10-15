@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you cite this list, please cite it as below."
+type: dataset
+title: "Awesome EU Fintech Regulation"
+abstract: "A curated list of primary sources, regulators and open-source tools for EU fintech regulation (MiCAR, DORA, MiFID II, PSD2 and the AI Act in financial services), with a Level 2 tracker generated from EU Publications Office metadata."
+authors:
+  - alias: sebastianfoerste
+    website: "https://github.com/sebastianfoerste"
+license: CC0-1.0
+repository-code: "https://github.com/sebastianfoerste/awesome-eu-fintech-regulation"
+url: "https://github.com/sebastianfoerste/awesome-eu-fintech-regulation"
+keywords:
+  - awesome-list
+  - micar
+  - dora
+  - mifid2
+  - psd2
+  - eu-ai-act
+  - financial-regulation
+  - regtech

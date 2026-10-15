@@ -1,0 +1,39 @@
+name: Report a broken or redirected link
+description: A link in the list is dead, redirects elsewhere, sits behind a paywall or login, or now shows changed or superseded content.
+title: "Broken link: "
+labels: ["broken-link"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry or URL
+      description: The entry's name as it appears in the list, or the URL itself.
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What happens
+      options:
+        - "404 / not found"
+        - Redirects elsewhere
+        - Paywall or login
+        - Content changed or superseded
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Replacement URL, if known
+      description: Prefer the primary source, such as EUR-Lex, the Official Journal or the regulator's own page.
+      placeholder: "https://"
+    validations:
+      required: false
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Anything that helps, such as where the link redirects to or the error you see.
+    validations:
+      required: false
