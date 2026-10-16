@@ -1,0 +1,48 @@
+name: Level 2 watch
+
+# Once a week, ask CELLAR (the EU Publications Office's metadata service) for the
+# delegated and implementing acts under the five Level 1 acts and compare the
+# answer with data/level2.csv. If anything differs, open one issue labelled
+# level2-update, or rewrite the body of the one already open. It never edits the
+# list: a person reviews the change and runs `python scripts/level2.py update`.
+# The "Level 2 status update" issue form uses the same label for reports people
+# file by hand, so the workflow finds its own issue by title and leaves those alone.
+on:
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compare CELLAR with data/level2.csv
+        run: python scripts/level2.py diff --report "$RUNNER_TEMP/level2-report.md"
+      - name: Open or update the level2-update issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REPORT: ${{ runner.temp }}/level2-report.md
+          TITLE: "Level 2: CELLAR records changes not yet in data/level2.csv"
+        run: |
+          if [ ! -f "$REPORT" ]; then
+            echo "CELLAR matches data/level2.csv."
+            exit 0
+          fi
+          gh label create level2-update --color 1d76db --force \
+            --description "A Level 2 status change the list does not reflect yet"
+          number=$(gh issue list --label level2-update --state open --limit 100 --json number,title \
+            --jq "map(select(.title == \"$TITLE\")) | .[0].number // empty")
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body-file "$REPORT"
+          else
+            gh issue create --title "$TITLE" --label level2-update --body-file "$REPORT"
+          fi

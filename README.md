@@ -1,43 +1,17 @@
 # Awesome EU Fintech Regulation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-**Find the actual legal text, the current Level 2 status and the open-source tooling for EU fintech compliance, with primary sources only.**
+> Primary sources for EU fintech regulation, with a dated Level 2 tracker: MiCAR, DORA, MiFID II, PSD2 and the AI Act in financial services.
 
-Keywords: MiCAR, DORA, MiFID II, PSD2, EU AI Act in financial services. Maintained by a practicing EU financial-regulation lawyer. Nothing here is legal advice.
+<!-- level2-status:start -->
+**Status at a glance**, checked against official EU metadata (CELLAR) on 15 October 2026: Level 2 acts in force under [MiCAR 37](docs/level2.md#micar), [DORA 12](docs/level2.md#dora), [MiFID II 50](docs/level2.md#mifid-ii), [PSD2 9](docs/level2.md#psd2) and [AI Act 2](docs/level2.md#ai-act). Pending: 1 measure submitted but not yet adopted, listed under Level 2 measures.
+<!-- level2-status:end -->
 
-## Why this list
+- **Primary sources only.** EUR-Lex texts, regulator pages and registers, not law-firm client alerts or vendor pages.
+- **Level 2, dated.** A [tracker](docs/level2.md) of every delegated and implementing act under the five Level 1 acts, generated from the EU Publications Office's metadata, plus annotated entries for the measures that matter most and for drafts still in the pipeline.
+- **Checked weekly.** CI checks every link, and every CELEX number and date against the official metadata; stale entries are removed. Offline tests run on every pull request.
+- **Disclosed self-promotion.** The tools the curator maintains sit in their own labelled section.
 
-* **Primary sources only.** EUR-Lex texts, regulator pages and registers, not law-firm client alerts or vendor pages.
-* **Weekly link checks.** CI checks every link weekly, and stale entries are removed. Offline structural tests run on every pull request.
-* **Disclosed self-promotion.** The four tools the curator maintains sit in their own labelled section.
-* **Level 2 status.** Dated, status-tracked delegated and implementing acts, not just the Level 1 acts.
-
-## Try it
-
-The list is CC0 and needs no install. To read it or query it locally:
-
-```bash
-git clone https://github.com/sebastianfoerste/awesome-eu-fintech-regulation
-cd awesome-eu-fintech-regulation
-sed -n '/^## Level 2 measures/,/^## Related/p' README.md | grep -oE '^- \[[^]]*\]|(Adopted|Submitted) [^;]*(;[^;]*)*\.$' | sed 's/^- //'
-```
-
-Output, from running exactly that on this README:
-
-```text
-[Delegated Regulation (EU) 2025/1264]
-Adopted 27 June 2025, in force 23 October 2025.
-[EBA final report EBA/RTS/2024/10]
-Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; not yet adopted.
-[EBA asset-referenced and e-money token page]
-```
-
-Every entry carries its source link; see [Level 2 measures](#level-2-measures) for the citations (Art. 45(7)(b) and Art. 36(4) MiCAR). The status page has no date line, so check it directly. This repo ships no installable package (so no PyPI release is planned or implied); the commands above are the whole workflow.
-
-Run the offline structural checks (needs `pytest`; last run here: `4 passed`):
-
-```bash
-pip install pytest && python -m pytest -q
-```
+Maintained by a practicing EU financial-regulation lawyer. Nothing here is legal advice. How the list is curated and checked: [docs/curation.md](docs/curation.md).
 
 ## Contents
 
@@ -47,11 +21,10 @@ pip install pytest && python -m pytest -q
 - [Guides and trackers](#guides-and-trackers)
 - [Open-source tools](#open-source-tools)
 - [Related lists](#related-lists)
-- [Part of the EU regulation as code suite](#part-of-the-eu-regulation-as-code-suite)
 
 ## Level 2 measures
 
-Delegated and implementing acts, and the drafts still in the pipeline. Level 1 tells you the obligation exists; Level 2 tells you the number.
+Delegated and implementing acts, and the drafts still in the pipeline. Level 1 tells you the obligation exists; Level 2 tells you the number. The tracker linked above lists every adopted act with its dates; the entries below are annotated by hand.
 
 - [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj) - RTS on the minimum contents of the liquidity management policy and procedures for issuers of significant ARTs and EMTs, and for other issuers where their competent authority requires it, under Art. 45(7), first subparagraph, point (b) MiCAR. Adopted 27 June 2025, in force 23 October 2025.
 - [EBA final report EBA/RTS/2024/10](https://www.eba.europa.eu/sites/default/files/2024-06/580db2f3-8370-4927-baa3-0f995722b417/Final%20report_draft%20RTS%20further%20specifying%20the%20liquidity%20requirements%20Article%2036%204.pdf) - Draft RTS on the liquidity requirements of the reserve of assets under Art. 36(4) and Art. 45(7)(b) MiCAR, including the deposit minimums. Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; not yet adopted.
@@ -70,9 +43,9 @@ Official Journal texts on EUR-Lex. Later amendments appear in the consolidated v
 ## Regulators and registers
 
 - [ESMA — MiCA hub](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica) - Level 2/3 measures, Q&As, and supervisory convergence work.
-- [ESMA — interim MiCA register](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica#InterimMiCARegister) - CSV files of notified whitepapers, ART and EMT issuers, authorized CASPs and non-compliant entities (Arts. 109 and 110 MiCAR). The primary empirical dataset for MiCAR work.
+- [ESMA — interim MiCA register](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica#InterimMiCARegister) - CSV files of notified whitepapers, ART and EMT issuers, authorized CASPs and non-compliant entities (Arts. 109 and 110 MiCAR). The primary empirical dataset for MiCAR work; the curator's [micar-register-observatory](https://github.com/sebastianfoerste/micar-register-observatory#dashboard) diffs it weekly (disclosure: maintained by the author of this list).
 - [ESMA — DORA page](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/digital-operational-resilience-act-dora) - Joint-ESA RTS/ITS work and oversight of critical ICT providers.
-- [EBA — markets in crypto-assets](https://www.eba.europa.eu/activities/direct-supervision-and-oversight/markets-crypto-assets) - ART/EMT supervision, significance assessments, own-funds guidance.
+- [EBA — supervisory role under MiCA](https://www.eba.europa.eu/activities/direct-supervision-and-oversight/ebas-supervisory-role-under-mica) - Supervision of significant ARTs and EMTs, significance assessments and supervisory colleges.
 - [EIOPA — DORA page](https://www.eiopa.europa.eu/digital-operational-resilience-act-dora_en) - Insurance-sector DORA implementation.
 - [BaFin — crypto institutions](https://www.bafin.de/DE/unternehmen-maerkte/aufsicht/kryptoinstitute/kryptoinstitute_node) - German NCA practice: notification and reporting duties under the KMAG, whitepaper submission under Art. 8 MiCAR (German).
 - [European Commission — digital finance](https://finance.ec.europa.eu/digital-finance_en) - Legislative pipeline: PSD3/PSR, FiDA, digital euro.
@@ -98,10 +71,10 @@ Official Journal texts on EUR-Lex. Later amendments appear in the consolidated v
 
 Disclosure: these four are maintained by the author of this list.
 
-- [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) - Deterministic MiCAR whitepaper linter with pinpoint citations, CI action, and a reproducible study over ESMA-register filings.
 - [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) - Deterministic EU AI Act risk-tier classifier with cited obligations and review gates.
-- [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Evaluation harness for legal AI contract review: clause scoring, citation grounding, unsupported-citation counts and an adversarial minimal-pair campaign across NDA, SaaS and Art. 28 GDPR data processing agreements.
-- [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - Deterministic legal function operating model for intake, risk, routing, SLAs, approvals and board reporting, with a versioned control contract between the operating model and its supervised agent.
+- [eu-reg-mcp](https://github.com/sebastianfoerste/eu-reg-mcp) - MCP server giving AI agents cited, review-gated grounding in EU regulation: ESMA MiCAR register search, change tracking, white paper linting, EU AI Act classification.
+- [micar-register-observatory](https://github.com/sebastianfoerste/micar-register-observatory) - Living dashboard of the ESMA interim MiCAR register: weekly snapshots, entry diffs, withdrawal tracking, and white paper format coverage.
+- [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) - Deterministic MiCAR whitepaper linter with pinpoint citations, CI action, and a reproducible study over ESMA-register filings.
 
 ## Related lists
 
@@ -109,20 +82,13 @@ Disclosure: these four are maintained by the author of this list.
 - [awesome-legal-nlp](https://github.com/maastrichtlawtech/awesome-legal-nlp) - LegalNLP datasets, models, and benchmarks.
 - [awesome-legaltech](https://github.com/Vaquill-AI/awesome-legaltech) - Open-source platforms, models, and tools for the legal ecosystem.
 
-## Part of the EU regulation as code suite
-
-"EU regulation as code" is a set of repos by [sebastianfoerste](https://github.com/sebastianfoerste). This list is the source map; the others are tooling and analysis.
-
-| Repo | Role |
-|---|---|
-| [awesome-eu-fintech-regulation](https://github.com/sebastianfoerste/awesome-eu-fintech-regulation) | This list |
-| [micar-whitepaper-linter](https://github.com/sebastianfoerste/micar-whitepaper-linter) | Deterministic MiCAR whitepaper linter with pinpoint citations |
-| [eu-ai-act-classifier](https://github.com/sebastianfoerste/eu-ai-act-classifier) | Deterministic EU AI Act risk-tier classifier |
-| [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) | Evaluation harness for legal AI contract review |
-| [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) | Deterministic legal function operating model |
-| [eu-reg-mcp](https://github.com/sebastianfoerste/eu-reg-mcp) | [UNVERIFIED] role not documented in this repo |
-| [micar-register-observatory](https://github.com/sebastianfoerste/micar-register-observatory) | [UNVERIFIED] role not documented in this repo |
-
 ## Contributing
 
-Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Hard rules: primary sources over commentary, working links, no vendor marketing pages, self-promotion requires disclosure. How the list is curated and checked: [docs/curation.md](docs/curation.md). Licensed CC0 (see [LICENSE](LICENSE)).
+Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Hard rules: primary sources over commentary, working links, no vendor marketing pages, self-promotion requires disclosure. Licensed CC0 (see [LICENSE](LICENSE)).
+
+## Footnotes
+
+This list is part of "EU regulation as code", a set of repos by [sebastianfoerste](https://github.com/sebastianfoerste). The ones on EU fintech regulation are listed under Maintained by the curator; these two are about legal work more generally:
+
+- [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Scores an AI contract review against lawyer-written answer sets: did it find the clauses, grade the risk correctly, quote real text and avoid inventing anything.
+- [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - How an in-house legal team runs: intake, risk bands, routing, SLAs, approvals and a board-ready report, with a supervised agent behind review gates.

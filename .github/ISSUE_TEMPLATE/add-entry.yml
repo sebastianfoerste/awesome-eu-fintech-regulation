@@ -1,0 +1,70 @@
+name: Suggest an entry
+description: Propose a primary source, regulator page or register, open-source tool, or tracker for the list.
+title: "Add: "
+labels: ["add-entry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The list takes EU legislative texts and official Level 2/3 measures, regulator pages and registers, genuinely open-source tools (OSI license, public repo, runs without a paid account), and free trackers or guides of lasting value. Law-firm client alerts, blog posts and vendor marketing pages are out of scope. See [CONTRIBUTING.md](https://github.com/sebastianfoerste/awesome-eu-fintech-regulation/blob/main/CONTRIBUTING.md).
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      description: Where the entry belongs.
+      options:
+        - Level 2 measures
+        - Legislation (Level 1)
+        - Regulators and registers
+        - Guides and trackers
+        - Open-source tools
+        - Related lists
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The name as it should appear in the list.
+      placeholder: "e.g. Delegated Regulation (EU) 2025/1264"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: The direct link. No redirects to marketing pages, no paywalls.
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: One-sentence description
+      description: One sentence, ending with a period, as it would appear after the link.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it qualifies
+      description: Which inclusion rule it meets, and what it adds that the list does not already cover.
+    validations:
+      required: true
+  - type: dropdown
+    id: affiliation
+    attributes:
+      label: Affiliation
+      description: Suggesting your own project is fine if you disclose it.
+      options:
+        - I am not affiliated with it
+        - I maintain or work on it
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: It is a primary source (EU legislative text, official Level 2/3 measure, regulator page or register), a genuinely open-source tool, or a free tracker or guide of lasting value, and not a law-firm alert, blog post or vendor marketing page.
+          required: true
