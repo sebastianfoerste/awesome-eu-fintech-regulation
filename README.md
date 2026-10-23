@@ -53,6 +53,7 @@ Official Journal texts on EUR-Lex. Later amendments appear in the consolidated v
 ## Guides and trackers
 
 - [EU AI Act Explorer](https://artificialintelligenceact.eu/) - Full-text navigation, obligation timelines, and implementation tracker (Future of Life Institute).
+- [VASP Tracker](https://vasptracker.com/) - Free tracker of crypto-asset service provider licensing dates, including each EU/EEA state's MiCAR transitional-period end date, with every date linked to the national law, ESMA list or regulator notice.
 
 ## Open-source tools
 
