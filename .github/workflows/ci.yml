@@ -1,0 +1,58 @@
+name: CI
+
+# The checks that gate pull requests. ci-ok waits for every other job and fails
+# unless all of them passed, so a ruleset needs to require ci-ok alone, and
+# adding or renaming a job never leaves it waiting for a check that is gone.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # The checks the main awesome list runs before accepting a list. awesome-lint
+  # reads the git history (the repo must be at least 30 days old), so check out
+  # the full history rather than the latest commit only.
+  awesome-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          # No package.json here, so there is no lockfile for setup-node to cache.
+          package-manager-cache: false
+      - run: npx --yes awesome-lint@2.3.0 README.md
+        env:
+          github_token: ${{ github.token }}
+
+  # Offline structural checks on README.md. They need no network, so unlike the
+  # weekly link check they can gate pull requests without flaking.
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: python -m pytest -q
+
+  # Runs even when a job it needs failed, was cancelled or was skipped, and
+  # fails in each of those cases.
+  ci-ok:
+    if: always()
+    needs: [awesome-lint, tests]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Fail unless every needed job succeeded
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped')
+        run: exit 1
