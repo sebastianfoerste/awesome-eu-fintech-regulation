@@ -3,7 +3,8 @@
 The weekly workflow checks that links resolve; that needs the network. These checks
 run anywhere and catch the mistakes a hand-edited list actually makes: malformed
 entries, duplicate links, a contents entry pointing at a renamed heading, a
-disclosure count that no longer matches the curator's own entries, entries out of
+disclosure count that no longer matches the curator's own entries, a link to the
+curator's repositories outside their section without a disclosure, entries out of
 order, status lines that drift from the fixed wording, and leftover placeholders.
 """
 
@@ -27,8 +28,11 @@ DATES = re.compile(DATE)
 
 # Sections whose entries are kept in alphabetical order (CONTRIBUTING.md).
 ALPHABETICAL = ["## Guides and trackers", "## Open-source tools", "### Maintained by the curator",
-                "## Related lists", "## Footnotes"]
+                "## Related lists"]
 PLACEHOLDER = re.compile(r"\[UNVERIFIED\]|\bTODO\b|\bTBD\b")
+# The profile root and the Pages sites count too: the old Footnotes intro linked the profile root.
+CURATOR_REPO = re.compile(r"github\.com/sebastianfoerste\b|sebastianfoerste\.github\.io", re.IGNORECASE)
+CURATION = (ROOT / "docs" / "curation.md").read_text(encoding="utf-8")
 
 
 def _slug(heading):
@@ -81,6 +85,21 @@ def test_curator_disclosure_count_matches_entries():
     stated = NUMBERS[re.search(r"these (\w+)", disclosure)[1]]
     listed = sum(1 for line in block if ENTRY.match(line))
     assert stated == listed, f"disclosure says {stated}, section lists {listed}"
+
+
+def test_curation_page_states_the_curator_count():
+    stated = NUMBERS[re.search(r"maintains (\w+) of the linked tools", CURATION)[1]]
+    listed = sum(1 for line in _section("### Maintained by the curator") if ENTRY.match(line))
+    assert stated == listed, f"docs/curation.md says {stated}, the README section lists {listed}"
+
+
+def test_curator_links_outside_their_section_carry_a_disclosure():
+    """The README says the curator's tools sit in their own section; a link to one anywhere else must say whose it is."""
+    start = LINES.index("### Maintained by the curator")
+    inside = range(start, start + 1 + len(_section("### Maintained by the curator")))
+    undisclosed = [line for number, line in enumerate(LINES)
+                   if number not in inside and CURATOR_REPO.search(line) and "disclosure" not in line.lower()]
+    assert not undisclosed, "links to the curator's repositories without a disclosure:\n" + "\n".join(undisclosed)
 
 
 def test_alphabetical_sections_are_in_order():

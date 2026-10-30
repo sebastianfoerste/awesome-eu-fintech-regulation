@@ -15,7 +15,7 @@ Primary sources win over commentary. Blog posts and law-firm client alerts are o
 
 ## Self-promotion
 
-The list's maintainer also maintains four of the linked tools. They sit in their own section, "Maintained by the curator", with a disclosure line, and meet the same maturity rule as every other tool. A test checks that the number in that line matches the number of entries.
+The list's maintainer also maintains four of the linked tools. They sit in their own section, "Maintained by the curator", with a disclosure line, and meet the same maturity rule as every other tool. One of them, micar-register-observatory, is also linked from the ESMA interim MiCA register entry under "Regulators and registers", with a disclosure in that entry. A test checks that the number in the section's disclosure line matches the number of its entries and the number on this page, and that every other link in the README to the maintainer's repositories carries a disclosure.
 
 ## Level 2 tracker
 
@@ -38,7 +38,7 @@ Columns added to the CSV by hand survive `update`. To annotate acts, add an `art
 | CELEX check (`scripts/verify_celex.py`): every EUR-Lex entry in the README exists in CELLAR, cites the act it links, is in force, and its "Adopted …, in force …" dates match CELLAR | `.github/workflows/link-check.yml` | weekly and manual | yes |
 | Level 2 watch (`scripts/level2.py diff`): opens or updates its own issue labelled `level2-update`, leaving alone the reports people file under that label through the issue form, when CELLAR records a new act under the five Level 1 acts, an in-force flag changes, or other dates or titles change | `.github/workflows/level2-watch.yml` | weekly (Mondays 07:00 UTC) and manual | yes |
 | [awesome-lint](https://github.com/sindresorhus/awesome-lint) on `README.md` | `.github/workflows/awesome-lint.yml` | pull requests and pushes to `main` | yes (installs awesome-lint) |
-| Offline tests (`tests/`): entry format, no duplicate links, contents anchors match headings, Contents first, alphabetical sections, Level 2 status wording and dates, no placeholders, disclosure count; the CSV is well formed and the tracker page and README status line match it; the CELLAR parsing and diffing logic on fixed answers; the link check does not accept 202 and skips EUR-Lex; the Level 2 watch rewrites only its own issue; community files present | `.github/workflows/tests.yml` | pull requests and pushes to `main` | no |
+| Offline tests (`tests/`): entry format, no duplicate links, contents anchors match headings, Contents first, alphabetical sections, Level 2 status wording and dates, no placeholders, disclosure count and a disclosure on every link to the curator's repositories outside their section; the CSV is well formed and the tracker page and README status line match it; the CELLAR parsing and diffing logic on fixed answers; the link check does not accept 202 and skips EUR-Lex; the Level 2 watch rewrites only its own issue; community files present | `.github/workflows/tests.yml` | pull requests and pushes to `main` | no |
 
 The actions these workflows use are pinned to commits. Dependabot (`.github/dependabot.yml`) opens one grouped pull request when a release moves, and a test fails on a floating tag.
 
