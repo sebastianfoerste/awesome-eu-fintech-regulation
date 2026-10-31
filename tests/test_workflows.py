@@ -50,3 +50,30 @@ def test_level2_watch_rewrites_only_its_own_issue():
     assert '--title "$TITLE"' in workflow, "the watcher must create its issue under the title it searches for"
     form_title = re.search(r'^title: "([^"]*)"$', _read(".github/ISSUE_TEMPLATE/level2-status-update.yml"), re.M)[1]
     assert not title[1].startswith(form_title), "issues filed through the form would match the watcher's title"
+
+
+WORKFLOWS = sorted((ROOT / ".github" / "workflows").glob("*.yml"))
+USES = re.compile(r"^\s+(?:- )?uses: ")
+# owner/repo[/path]@<full commit SHA> # v<version>: a tag can be moved, a commit cannot.
+PINNED = re.compile(r"^\s+(?:- )?uses: [\w.-]+/[\w.-]+(?:/[\w./-]+)?@[0-9a-f]{40} # v\d+(?:\.\d+)*$")
+
+
+def test_every_action_is_pinned_to_a_commit_with_its_version():
+    """Dependabot (.github/dependabot.yml) moves the pins; nothing else should."""
+    assert WORKFLOWS, "no workflows under .github/workflows"
+    loose = [f"{path.name}:{number}: {line.strip()}"
+             for path in WORKFLOWS
+             for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1)
+             if USES.match(line) and not PINNED.match(line)]
+    assert not loose, "actions not pinned to a commit SHA with a version comment:\n" + "\n".join(loose)
+
+
+def test_every_workflow_declares_permissions():
+    missing = [path.name for path in WORKFLOWS
+               if not re.search(r"^permissions:", path.read_text(encoding="utf-8"), re.M)]
+    assert not missing, f"workflows without a top-level permissions block: {missing}"
+
+
+def test_dependabot_watches_the_action_pins():
+    config = _read(".github/dependabot.yml")
+    assert re.search(r"^\s+- package-ecosystem: github-actions$", config, re.M), "dependabot.yml must cover github-actions"
