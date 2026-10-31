@@ -1,0 +1,13 @@
+# Keeps the commit pins of the actions in .github/workflows/ current. At most one
+# grouped pull request a week; delete this file to stop them.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ["*"]
+    open-pull-requests-limit: 2
