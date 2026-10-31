@@ -69,6 +69,17 @@ Submitted 13 June 2024; the Commission proposed amendments on 28 August 2025; no
 
 The whole tracker is in `data/level2.csv`, for example `grep '^DORA,' data/level2.csv`.
 
+## Level 1 currency
+
+Checked on 31 October and 1 November 2026 against official sources only. Nothing here is legal advice.
+
+- **MiCAR:** CELLAR confirms the dates of [Delegated Regulation (EU) 2025/1264](https://eur-lex.europa.eu/eli/reg_del/2025/1264/oj). The [EBA page](https://www.eba.europa.eu/regulation-and-policy/asset-referenced-and-e-money-tokens-mica) still shows the Art. 36(4) liquidity RTS at its opinion of 10 October 2025, and CELLAR records no later MiCAR delegated act.
+- **DORA, MiFID II:** CELEX numbers and in-force flags confirmed by `scripts/verify_celex.py`.
+- **PSD2:** the [Commission's payment services page](https://finance.ec.europa.eu/consumer-finance-and-payments/payment-services/payment-services_en) lists a political agreement on the PSD2 review of 27 November 2025; CELLAR records no PSD3 or PSR act.
+- **AI Act:** amended by [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj) of 8 July 2026 (Digital Omnibus on AI), in force 27 July 2026, per CELLAR. The README's sentence on Annex III point 5(b) and (c) has not been re-read against the amended text.
+
+The Official Journal texts on EUR-Lex were not opened during this check (EUR-Lex answers automated clients with an empty page); re-read them before relying on this note.
+
 ## Caveats
 
 - The annotated Level 2 entries in the README are hand-maintained. Their CELEX numbers and dates are checked against CELLAR every week, but drafts and ESA reports are not in CELLAR: check the linked primary source before relying on them.
