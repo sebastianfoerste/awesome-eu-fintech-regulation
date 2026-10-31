@@ -3,7 +3,7 @@
 > Primary sources for EU fintech regulation, with a dated Level 2 tracker: MiCAR, DORA, MiFID II, PSD2 and the AI Act in financial services.
 
 <!-- level2-status:start -->
-**Status at a glance**, checked against official EU metadata (CELLAR) on 15 October 2026: Level 2 acts in force under [MiCAR 37](docs/level2.md#micar), [DORA 12](docs/level2.md#dora), [MiFID II 50](docs/level2.md#mifid-ii), [PSD2 9](docs/level2.md#psd2) and [AI Act 2](docs/level2.md#ai-act). Pending: 1 measure submitted but not yet adopted, listed under Level 2 measures.
+**Status at a glance**, checked against official EU metadata (CELLAR) on 1 November 2026: Level 2 acts in force under [MiCAR 37](docs/level2.md#micar), [DORA 12](docs/level2.md#dora), [MiFID II 50](docs/level2.md#mifid-ii), [PSD2 9](docs/level2.md#psd2) and [AI Act 2](docs/level2.md#ai-act). Pending: 1 measure submitted but not yet adopted, listed under Level 2 measures.
 <!-- level2-status:end -->
 
 - **Primary sources only.** EUR-Lex texts, regulator pages and registers, not law-firm client alerts or vendor pages.
