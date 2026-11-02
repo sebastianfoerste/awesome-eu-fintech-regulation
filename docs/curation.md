@@ -41,7 +41,7 @@ Columns added to the CSV by hand survive `update`. To annotate acts, add an `art
 | [awesome-lint](https://github.com/sindresorhus/awesome-lint) on `README.md` | `.github/workflows/ci.yml` | pull requests and pushes to `main` | yes (installs awesome-lint) |
 | Offline tests (`tests/`): entry format, no duplicate links, contents anchors match headings, Contents first, alphabetical sections, Level 2 status wording and dates, no placeholders, disclosure count and a disclosure on every link to the curator's repositories outside their section; the CSV is well formed and the tracker page and README status line match it; the CELLAR parsing and diffing logic on fixed answers; the link check does not accept 202 and skips EUR-Lex; the Level 2 watch rewrites only its own issue; community files present | `.github/workflows/ci.yml` | pull requests and pushes to `main` | no |
 
-The actions these workflows use are pinned to commits. Dependabot (`.github/dependabot.yml`) opens one grouped pull request when a release moves, and a test fails on a floating tag.
+The actions these workflows use are pinned to commits. Dependabot (`.github/dependabot.yml`) proposes a new release once it is seven days old, minor and patch releases in one grouped pull request and each major release in its own, and a test fails on a floating tag.
 
 Run the offline tests locally:
 
