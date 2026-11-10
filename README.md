@@ -9,7 +9,7 @@
 - **Primary sources only.** EUR-Lex texts, regulator pages and registers, not law-firm client alerts or vendor pages.
 - **Level 2, dated.** A [tracker](docs/level2.md) of every delegated and implementing act under the five Level 1 acts, generated from the EU Publications Office's metadata, plus annotated entries for the measures that matter most and for drafts still in the pipeline.
 - **Checked weekly.** CI checks every link, and every CELEX number and date against the official metadata; stale entries are removed. Offline tests run on every pull request.
-- **Disclosed self-promotion.** The tools the curator maintains sit in their own labelled section.
+- **Disclosed self-promotion.** The tools the curator maintains sit in their own labelled section. One of them, the register observatory, is also linked from the ESMA register entry, with a disclosure.
 
 Maintained by a practicing EU financial-regulation lawyer. Nothing here is legal advice. How the list is curated and checked: [docs/curation.md](docs/curation.md).
 
@@ -85,10 +85,3 @@ Disclosure: these four are maintained by the author of this list.
 ## Contributing
 
 Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Hard rules: primary sources over commentary, working links, no vendor marketing pages, self-promotion requires disclosure. Licensed CC0 (see [LICENSE](LICENSE)).
-
-## Footnotes
-
-This list is part of "EU regulation as code", a set of repos by [sebastianfoerste](https://github.com/sebastianfoerste). The ones on EU fintech regulation are listed under Maintained by the curator; these two are about legal work more generally:
-
-- [contract-review-eval-harness](https://github.com/sebastianfoerste/contract-review-eval-harness) - Scores an AI contract review against lawyer-written answer sets: did it find the clauses, grade the risk correctly, quote real text and avoid inventing anything.
-- [legal-function-operating-system](https://github.com/sebastianfoerste/legal-function-operating-system) - How an in-house legal team runs: intake, risk bands, routing, SLAs, approvals and a board-ready report, with a supervised agent behind review gates.
